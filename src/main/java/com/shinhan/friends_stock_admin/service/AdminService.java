@@ -26,7 +26,7 @@ public class AdminService {
     private final TermQuizItemRepository termQuizItemRepository;
     public Response<List<ResponseTermInfoDTO>> getTermAll() throws Exception {
         try {
-            return Response.success(termQuizQuestionRepository.findAll().stream().map(ResponseTermInfoDTO::of).toList());
+            return Response.success(termQuizQuestionRepository.findByIsPublished(false).stream().map(ResponseTermInfoDTO::of).toList());
         }
         catch (Exception e){
             throw new Exception("주식 용어 목록 전체를 가져오는 데 실패하였습니다.");
