@@ -98,7 +98,7 @@ const initForm = () => {
                     alert(message);
                 }
 
-                // location.reload();
+                location.reload();
             },
             error: function (error) {
                 console.error("전송 실패:", error);
