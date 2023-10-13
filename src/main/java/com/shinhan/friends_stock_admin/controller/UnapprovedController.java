@@ -13,7 +13,7 @@ public class UnapprovedController {
     //최종 관리자에게 관리자 권한 요청하기
 
     @PostMapping("/api/signIn")
-    public ResponseEntity<Long> signIn(@RequestBody SignInRequestDTO signInRequestDTO){
+    public ResponseEntity<Long> signIn(@RequestBody SignInRequestDTO signInRequestDTO) throws Exception {
         unapprovedService.signIn(signInRequestDTO);
         return ResponseEntity.ok().build();
     }

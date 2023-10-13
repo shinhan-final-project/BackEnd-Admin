@@ -1,6 +1,7 @@
 package com.shinhan.friends_stock_admin.domain.entity;
 
 import com.sun.istack.NotNull;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -37,7 +38,7 @@ public class TermQuizItem {
     //작성한 관리자 번호
     @Column(name = "writer_id")
     @NotNull
-    private long writerId;
+    private String writerId;
 
     //    용어 추가일
     @Column(name = "created_at")
@@ -50,5 +51,12 @@ public class TermQuizItem {
     @NotNull
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    @Builder
+    public TermQuizItem(TermQuizQuestion quizId, String content, String writerId){
+        this.quizId = quizId;
+        this.content = content;
+        this.writerId = writerId;
+    }
 
 }

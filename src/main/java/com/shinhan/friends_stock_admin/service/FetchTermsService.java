@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
@@ -22,18 +23,19 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class FetchTermsService {
     @Value("${GET_TERM_API_KEY}")
     private String serviceKey;
+    private int pageNumber = 0;
     private final TermQuizQuestionRepository termQuizQuestionRepository;
-    private final TermQuizItemRepository termQuizItemRepository;
 
-    //@Scheduled(cron = "0 12 * * *")
-    public void getTermInfoFromOpenAPI(int value) throws JsonProcessingException {
+    @Scheduled(cron = "0 0 12 * * *")
+    public void getTermInfoFromOpenAPI() {
+        System.out.println("실행");
         final String url = String.valueOf(UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("api.seibro.or.kr")
                 .path("/openapi/service/FnTermSvc/getFinancialTermMeaning")
                 .queryParam("serviceKey", serviceKey)
-                .queryParam("pageNo", 1)
-                .queryParam("numOfRows",value)
+                .queryParam("pageNo", pageNumber++)
+                .queryParam("numOfRows", 100)
                 .build());
 
         DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory(url);
@@ -56,7 +58,16 @@ public class FetchTermsService {
 
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
             ResponseFromOpenAPIDTO json = mapper.readValue(jsonObject.toString(), ResponseFromOpenAPIDTO.class);
+            if(!json.getResponse().getHeader().getResultCode().equals("00")) {
+                System.out.println(json.getResponse().getHeader().getResultMsg());
+                return;
+            }
 
+            if(json.getResponse().getBody().getTotalCount() < pageNumber * 100){
+                System.out.println("저장할 수 있는 데이터를 모두 저장하였습니다.");
+                pageNumber--;
+                return;
+            }
             termQuizQuestionRepository.saveAll(TermQuizQuestion.convertToTermquizList(json));
         }
         catch (Exception e){

@@ -109,5 +109,16 @@ public class TermQuizQuestion {
                 .answerItemId(null)
                 .build();
     }
+
+    public void updateExplanation(String explanation, Boolean isPublished, int plusPoint, int minusPoint) {
+        this.explanation = explanation;
+        this.isPublished = isPublished;
+        this.plusPoint = plusPoint;
+        this.minusPoint = minusPoint;
+    }
+
+    public void updateAnswerItemId(long answerItemId) {
+        this.answerItemId = answerItemId;
+    }
 }
 
