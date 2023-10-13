@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>login page</title>
+</head>
+<body>
+<h1>Login</h1> <hr>
+<form th:action="@{/login}" method="POST">
+    이름 : <input type="text" name="username"> <br>
+    비밀번호 : <input type="password" name="password"> <br>
+    <p th:if="${param.error}" class="error">존재하지 않는 사용자이거나 비밀번호가 잘못 되었습니다.</p> <!-- 에러 메시지 표시 부분 -->
+    <button type="submit">Login</button>
+</form> <br>
+
+<a href="/signup">계정이 없다면 관리자에게 관리자 권한 요청하기 </a>
+</body>
+</html>

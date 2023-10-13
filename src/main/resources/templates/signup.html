@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>회원가입 페이지</h1>
+        이름 : <input type="text" id="name" name="name"><br>
+        비밀번호 : <input type="password" id="password" name="password"><br>
+        부서 : <input type="text" id="department" name="department"><br>
+        <button id="submit" type="submit">관리자에게 관리자 권한 요청하기</button>
+<br>
+<a href="/login">로그인 하기 -></a>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+$(document).ready(()=>{
+   $('#submit').click(() =>{
+       const requestData = {
+           name: $('#name').val(),
+           password: $('#password').val(),
+           department: $('#department').val()
+       };
+           $.ajax({
+           type: "POST",
+           url: "/api/signIn",
+           contentType: "application/json",
+           data: JSON.stringify(requestData),
+           success: (response) =>{
+               alert("성공적으로 요청되었습니다.");
+               location.reload();
+           },
+           error: (jqXHR, textStatus, errorThrown) => {
+               alert("요청에 실패하였습니다.");
+                location.reload();
+           }
+       });
+   })
+});
+</script>
+</body>
+</html>
