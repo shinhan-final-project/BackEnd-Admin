@@ -1,6 +1,10 @@
 $(document).ready(() => {
     $('#fetchData').click(() => {
-        $.get("/api/manager/wait-list", (data) => {
+        $.get("/api/manager/wait-list", ({ success, data, message }) => {
+            if (!success) {
+                console.error(message);
+            }
+            
             let table = '<table><thead><tr><th>ID</th><th>Name</th><th>Department</th><th>Select</th></tr></thead><tbody>';
             /* JSON 데이터를 테이블로 변환 */
             $.each(data, (index, item) => {
