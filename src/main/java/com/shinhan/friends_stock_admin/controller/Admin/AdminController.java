@@ -1,14 +1,10 @@
-package com.shinhan.friends_stock_admin.controller;
+package com.shinhan.friends_stock_admin.controller.Admin;
 
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
 import com.shinhan.friends_stock_admin.DTO.termGame.PostTermQuestionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.ResponseTermInfoDTO;
-import com.shinhan.friends_stock_admin.service.AdminService;
+import com.shinhan.friends_stock_admin.service.Admin.AdminService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;

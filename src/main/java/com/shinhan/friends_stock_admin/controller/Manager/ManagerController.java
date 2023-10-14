@@ -1,8 +1,8 @@
-package com.shinhan.friends_stock_admin.controller;
+package com.shinhan.friends_stock_admin.controller.Manager;
 
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
 import com.shinhan.friends_stock_admin.DTO.auth.ResponseApplyAdminRoleDTO;
-import com.shinhan.friends_stock_admin.service.ManagerService;
+import com.shinhan.friends_stock_admin.service.Manager.ManagerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

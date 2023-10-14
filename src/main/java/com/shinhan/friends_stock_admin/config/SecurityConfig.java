@@ -21,7 +21,7 @@ public class SecurityConfig{
                 .and()
                 .authorizeRequests()
                     .antMatchers("/login", "/api/signIn","/signup", "/test").permitAll() // 누구나 접근 가능
-                    .antMatchers("/admin/**", "/api/admin/**").hasRole("ADMIN") // ADMIN 만 접근 가능
+                    .antMatchers("/admin/**", "/api/admin/**", "/api/log/**").hasRole("ADMIN") // ADMIN 만 접근 가능
                     .antMatchers("/manager/**", "/api/manager/**").hasRole("MANAGER") // MANAGER 만 접근 가능
                     .antMatchers("/main").access("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('UNAPPROVED')")
                     //.anyRequest().authenticated() // 나머지는 권한이 있기만 하면 접근 가능

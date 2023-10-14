@@ -1,4 +1,4 @@
-package com.shinhan.friends_stock_admin.service;
+package com.shinhan.friends_stock_admin.service.Manager;
 
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
 import com.shinhan.friends_stock_admin.DTO.auth.ResponseApplyAdminRoleDTO;

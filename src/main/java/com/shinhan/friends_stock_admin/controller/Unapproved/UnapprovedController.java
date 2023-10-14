@@ -1,7 +1,7 @@
-package com.shinhan.friends_stock_admin.controller;
+package com.shinhan.friends_stock_admin.controller.Unapproved;
 
 import com.shinhan.friends_stock_admin.DTO.auth.SignInRequestDTO;
-import com.shinhan.friends_stock_admin.service.UnapprovedService;
+import com.shinhan.friends_stock_admin.service.Unapproved.UnapprovedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

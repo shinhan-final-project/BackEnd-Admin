@@ -1,4 +1,29 @@
-
+const fetchLogs = () =>{
+    $.get("/api/log", ({success, data, message}) =>{
+        if(!success){
+            console.error(message);
+        }
+        console.log(data);
+        let table = '<table><thead><tr><th>ID</th><th>플레이어 나이</th><th>플레이어 성별</th><th>플레이어 투자경력 연차</th><th>진행한 게임</th><th>받은(받게 될) 보상</th><th>푼 문제 용어</th><th>전문가가 작성한 용어에 대한 설명</th><th>문제의 정답에 대한 설명</th><th>사용자가 선택한 문제</th><th>문제 정답 여부</th><th>문제를 작성한 사람</th><th>생성 날짜</th></tr></thead><tbody>';
+        $.each(data, (index, item) =>{
+            table += '<tr>'
+                + '<td>' + item.age + '</td>'
+                + '<td>' + item.memberGender + '</td>'
+                + '<td>' + item.investCareerYear + '</td>'
+                + '<td>' + item.gameType + '</td>'
+                + '<td>' + item.gameReward + '</td>'
+                + '<td>' + item.term + '</td>'
+                + '<td>' + item.explanation + '</td>'
+                + '<td>' + item.answerExplanation + '</td>'
+                + '<td>' + item.selectExplanation + '</td>'
+                + '<td>' + item.correct + '</td>'
+                + '<td>' + item.writerInformation + '</td>'
+                + '<td>' + item.createdAt + '</td>';
+        });
+        table += '</tbody></table>';
+        $('#tableContainer').html(table);
+    });
+}
 const fetchTerms = () => {
     $.get("/api/admin/term", ({ success, data, message }) => {
 
@@ -128,6 +153,7 @@ $(document).ready(() => {
 
         $('#myDiv').css('display', 'none');
         $('#termQuizFormContainer').css('display', 'none');
+        fetchLogs();
     });
 
     initForm();
