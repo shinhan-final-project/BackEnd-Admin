@@ -8,6 +8,7 @@ import com.shinhan.friends_stock_admin.DTO.investGame.ResponseStockOpenApiDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.ResponseFromOpenAPIDTO;
 import com.shinhan.friends_stock_admin.domain.entity.InvestItem;
 import com.shinhan.friends_stock_admin.repository.InvestItemRepository;
+import com.shinhan.friends_stock_admin.utilty.S3UploadUtility;
 import com.shinhan.friends_stock_admin.utilty.S3uploadData;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
@@ -38,6 +39,8 @@ public class FetchInvestInfoService {
     @Value("${GET_INVEST_API_KEY}")
     private String serviceKey;
     private final InvestItemRepository investItemRepository;
+
+    private final S3UploadUtility s3UploadUtility;
 
     public void getCompanyStock(String stockId, String startTime, String endTime) throws JsonProcessingException {
         final String url = String.valueOf(UriComponentsBuilder.newInstance()
@@ -96,6 +99,8 @@ public class FetchInvestInfoService {
                         System.out.println("파싱할 데이터가 충분하지 않습니다.");
                     }
                 });
+        s3UploadUtility.upload("test-72", s3uploadData.toString());
+
     }
 
 
