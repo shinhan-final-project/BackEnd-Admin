@@ -21,3 +21,14 @@ logging:
     org.springframework.transaction: DEBUG
 jwt:
   secret: ${SECRET_KEY}
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    s3:
+      bucket-name: pda-stock-bucket
