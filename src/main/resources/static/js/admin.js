@@ -140,6 +140,8 @@ $(document).ready(() => {
     let fetched = false;
 
     $("#makeTermQuizBtn").click(() => {
+        $('#tableContainer').css('display', 'none');
+
         $('#myDiv').css('display', 'block');
         $('#termQuizFormContainer').css('display', 'block');
 
@@ -152,7 +154,7 @@ $(document).ready(() => {
     });
 
     $("#showLog").click(() => {
-        console.log("로그 가져오기");
+        $('#tableContainer').css('display', 'block');
 
         $('#myDiv').css('display', 'none');
         $('#termQuizFormContainer').css('display', 'none');
