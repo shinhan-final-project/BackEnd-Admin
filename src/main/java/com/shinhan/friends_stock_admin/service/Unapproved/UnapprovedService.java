@@ -3,8 +3,10 @@ package com.shinhan.friends_stock_admin.service.Unapproved;
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
 import com.shinhan.friends_stock_admin.DTO.auth.ResponseAdminDTO;
 import com.shinhan.friends_stock_admin.DTO.auth.SignInRequestDTO;
+import com.shinhan.friends_stock_admin.DTO.investGame.PostInvestQuestionDTO;
 import com.shinhan.friends_stock_admin.domain.Role;
 import com.shinhan.friends_stock_admin.domain.entity.Admin;
+import com.shinhan.friends_stock_admin.service.Admin.AdminService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.shinhan.friends_stock_admin.repository.AdminRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Service
@@ -20,6 +24,7 @@ import com.shinhan.friends_stock_admin.repository.AdminRepository;
 public class UnapprovedService implements UserDetailsService {
     private final AdminRepository adminRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AdminService adminService;
     //최종 관리자에게 관리자 요청 보내기
     public Response<String> signIn(SignInRequestDTO signInRequestDTO) throws Exception {
         try {
@@ -44,4 +49,5 @@ public class UnapprovedService implements UserDetailsService {
         Admin admin = adminRepository.findByName(username).orElseThrow();
         return ResponseAdminDTO.of(admin);
     }
+
 }

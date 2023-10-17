@@ -1,6 +1,7 @@
 package com.shinhan.friends_stock_admin.controller.Admin;
 
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
+import com.shinhan.friends_stock_admin.DTO.investGame.PostInvestQuestionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.PostTermQuestionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.ResponseTermInfoDTO;
 import com.shinhan.friends_stock_admin.service.Admin.AdminService;
@@ -15,6 +16,7 @@ import java.util.List;
 public class AdminController {
     private final AdminService adminService;
 
+    //용어 퀴즈
     @GetMapping("/api/admin/term")
     public Response<List<ResponseTermInfoDTO>> getTermInfoAll() throws Exception {
         return adminService.getTermAll();
@@ -29,4 +31,8 @@ public class AdminController {
         return adminService.registerTermQuestion(postTermQuestion, principal);
     }
 
+//    @PostMapping("/api/admin/invest")
+//    public Response<String> registerInvestQuestion(@RequestBody PostInvestQuestionDTO postInvestQuestionDTO) throws Exception{
+//        return adminService.registerInvestQuestion(postInvestQuestionDTO);
+//    }
 }

@@ -1,4 +1,4 @@
-package com.shinhan.friends_stock_admin.service;
+package com.shinhan.friends_stock_admin.service.FetchData;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +28,7 @@ public class FetchTermsService {
 
     @Scheduled(cron = "0 0 12 * * *")
     public void getTermInfoFromOpenAPI() {
-        System.out.println("실행");
+        System.out.println("용어 퀴즈 cron 실행");
         final String url = String.valueOf(UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("api.seibro.or.kr")
@@ -68,6 +68,7 @@ public class FetchTermsService {
                 pageNumber--;
                 return;
             }
+
             termQuizQuestionRepository.saveAll(TermQuizQuestion.convertToTermquizList(json));
         }
         catch (Exception e){
