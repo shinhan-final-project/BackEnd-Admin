@@ -20,6 +20,10 @@ body {
   display: flex;
 }
 
+.login_image {
+  width: 50vw;
+}
+
 /* 사이드 바 */
 .sidebar {
   width: 240px;
@@ -178,7 +182,7 @@ body {
 }
 
 #termQuizFormContainer button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: rgba(0, 70, 255, 0.56);
 }
 
 /* 예탁결제원 설명 */
