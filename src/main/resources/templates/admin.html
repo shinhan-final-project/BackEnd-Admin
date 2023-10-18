@@ -1,60 +1,124 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
-<head>
-    <meta charset="UTF-8">
+<html
+  lang="ko"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+  <head>
+    <meta charset="UTF-8" />
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="/css/admin.css">
+    <!-- <link rel="stylesheet" href="../static/css/admin.css" /> -->
+    <link rel="stylesheet" href="/css/admin.css" />
+    <link rel="stylesheet" href="/css/global.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
+    <div class="wrap">
+      <!-- 사이드바 -->
+      <div class="sidebar">
+        <div class="sidebar_header">
+          <p>두근두근!</p>
+          <p>신한프렌즈!</p>
+          <span class="color_blue">admin</span>
+          <button id="logout" th:onclick="|location.href='@{/logout}'|">
+            로그아웃
+          </button>
+        </div>
+        <div class="sidebar_menu">
+          <ul>
+            <li>
+              <a href="/main">문제 만들기</a>
+            </li>
+            <li>
+              <a href="/manager">권한 허용 관리</a>
+            </li>
+          </ul>
+        </div>
 
-    <div id="container">
-        <button id="makeTermQuizBtn">용어 게임 퀴즈 만들기</button>
-        <button id="showLog">게임 로그 보기</button>
-    </div>
+        <!-- <img
+          class="sidebar_img"
+          src="../static/assets/images/sol_friends.png"
+          alt="솔친구"
+        -->
+        <img
+        class="sidebar_img"
+        src="/assets/images/sol_friends.png"
+        alt="솔친구"/>
 
-    <div id="myDiv"></div>
-    <div id="tableContainer">
-        <!-- JSON 데이터가 여기에 표시될 것입니다 -->
-    </div>
-    <div id="termQuizFormContainer">
-        <!-- 퀴즈 만들기 -->
-        <form id="termQuizForm" action="" method="post">
-            <input type="hidden" name="termId" id="termId">
+      </div>
+      <!-- 용어 게임 문제 만들기 & 로그 보기 -->
+      <div class="main_container">
+        <div id="container">
+          <button id="makeTermQuizBtn" class="tab_button">
+            용어 게임 퀴즈 만들기
+          </button>
+          <button id="showLog" class="tab_button">게임 로그 보기</button>
+        </div>
 
-            <textarea name="explanation" id="explanation" cols="30" rows="10" placeholder="설명을 입력하세요"></textarea>
+        <div class="main_content">
+          <div id="myDiv"></div>
+          <div id="tableContainer">
+            <!-- JSON 데이터가 여기에 표시될 것입니다 -->
+          </div>
 
-            <!-- questionItem -->
-            <div th:each="i: ${#numbers.sequence(1, 3)}">
-                <input type="text" th:id="'questionOption' + ${i}" th:name="'questionOption'"
-                    th:placeholder="${'보기 ' + i + '를 입력하세요'}">
+          <div id="termQuizFormContainer">
+            <!-- 퀴즈 만들기 -->
+            <form id="termQuizForm" action="" method="post">
+              <input type="hidden" name="termId" id="termId" />
+
+              <textarea
+                name="explanation"
+                id="explanation"
+                cols="30"
+                rows="10"
+                placeholder="설명을 입력하세요"
+              ></textarea>
+
+              <!-- questionItem -->
+              <div th:each="i: ${#numbers.sequence(1, 3)}">
+                <input
+                  type="text"
+                  th:id="'questionOption' + ${i}"
+                  th:name="'questionOption'"
+                  th:placeholder="${'보기 ' + i + '를 입력하세요'}"
+                />
                 <label th:for="${'correctOption' + i}">정답</label>
-                <input type="radio" name="isAnswer" th:id="${'correctOption' + i}" th:value="${i}">
-                <br>
-            </div>
+                <input
+                  type="radio"
+                  name="isAnswer"
+                  th:id="${'correctOption' + i}"
+                  th:value="${i}"
+                />
+                <br />
+              </div>
 
-            <label for="plusPoint">맞췄을 때 상승할 호감도를 입력하세요:</label>
-            <input type="number" id="plusPoint">
-            <label for="minusPoint">틀렸을 때 하락할 호감도를 입력하세요:</label>
-            <input type="number" id="minusPoint">
+              <label for="plusPoint"
+                >맞췄을 때 상승할 호감도를 입력하세요:</label
+              >
+              <input type="number" id="plusPoint" />
+              <label for="minusPoint"
+                >틀렸을 때 하락할 호감도를 입력하세요:</label
+              >
+              <input type="number" id="minusPoint" />
 
-            <button type="submit">저장</button>
-        </form>
+              <button type="submit">저장</button>
+            </form>
 
-        <p>
-            한국 예탁 결제원의 설명:
-            <b id="desc"></b>
-        </p>
+            <p>
+              한국 예탁 결제원의 설명:
+              <b id="desc"></b>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <button id="logout" th:onclick="|location.href='@{/logout}'|">로그아웃</button>
-    
     <script src="/js/admin.js"></script>
-</body>
-
+  </body>
 </html>

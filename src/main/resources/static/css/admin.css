@@ -1,9 +1,126 @@
 select {
-    width: 300px;
-    height: 30px;
+  width: 300px;
+  height: 30px;
 }
 
 #myDiv,
 #termQuizFormContainer {
-    display: none;
+  display: none;
+}
+
+/* 전체 화면  */
+body {
+  background-color: #f2f2f2;
+  padding: 0 0;
+  margin: 0 0;
+  overflow-y: hidden;
+}
+
+.wrap {
+  display: flex;
+}
+
+/* 사이드 바 */
+.sidebar {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: white;
+  padding: 20px 30px 20px 30px;
+}
+
+.sidebar_header p {
+  color: var(--Primary-Text, #333);
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.color_blue {
+  color: #0046ff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#logout {
+  display: block;
+  margin-top: 20px;
+  border: 0px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.sidebar_menu {
+  height: 70%;
+}
+
+.sidebar_menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar_menu ul li {
+  list-style: none;
+  padding: 10px 0;
+}
+
+.sidebar_menu ul li a {
+  color: #1d1929;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.sidebar_img {
+  width: 240px;
+  position: absolute;
+  bottom: 10px;
+}
+
+/* 메인 헤더 */
+
+.main_container {
+  padding: 28px 50px;
+}
+
+.tab_button {
+  color: #1d1929;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  border: 0px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.tab_button:hover {
+  color: #0046ff;
+}
+
+/* 메인 내용 */
+.main_content {
+  padding: 20px 0px;
+}
+
+input[select] {
+  width: 200px;
+  padding: 5px 5px;
+  border: 1px solid #999;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[text] {
+  width: 200px;
+  padding: 10px 10px;
+  border: 1px solid #999;
+  border-radius: 8px;
+}
+
+.plusPoint{
+  width: 100px;
+  padding: 10px 10px;
 }

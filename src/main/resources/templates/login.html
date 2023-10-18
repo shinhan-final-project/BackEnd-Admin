@@ -1,21 +1,67 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <meta charset="UTF-8">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="UTF-8" />
     <title>login page</title>
-</head>
-<body>
-<h1>Login</h1> <hr>
-<form th:action="@{/login}" method="POST">
-    이름 : <input type="text" name="username"> <br>
-    비밀번호 : <input type="password" name="password"> <br>
-    <p th:if="${param.error}" class="error">존재하지 않는 사용자이거나 비밀번호가 잘못 되었습니다.</p> <!-- 에러 메시지 표시 부분 -->
-    <button type="submit">Login</button>
-</form> <br>
+    <link rel="stylesheet" href="/css/login.css" type="text/css" />
+    <link rel="stylesheet" href="/css/global.css" type="text/css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="left_container">
+        <p class="login_title">두근두근!</p>
+        <p class="login_subtitle">주식 프렌즈!</p>
+        <p class="left_subtitle">관리자 페이지</p>
+        <img
+          class="login_image"
+          src="/assets/images/login_bg.png"
+          alt="로그인 이미지"
+        />
+      </section>
+      <section>
+        <h1 class="right_login_title">로그인</h1>
+        <form th:action="@{/login}" method="POST">
+          <div class="nickname_container">
+            <img src="/assets/images/icon_user.svg" alt="유저 이미지" />
+            <div class="nickname_input">
+              <label> Id </label>
+              <input
+                type="text"
+                name="username"
+                placeholder="아이디를 입력해주세요"
+              />
+            </div>
+          </div>
 
-<a href="/signup">계정이 없다면 관리자에게 관리자 권한 요청하기 </a>
-</body>
+          <div class="password_container">
+            <img src="/assets/images/icon_password.svg" alt="유저 이미지" />
+            <div class="password_input">
+              <label> Password </label>
+              <input
+                type="password"
+                name="password"
+                placeholder="비밀번호를 입력해주세요"
+              />
+            </div>
+          </div>
+
+          <p th:if="${param.error}" class="error">
+            존재하지 않는 사용자이거나 비밀번호가 잘못 되었습니다.
+          </p>
+          <!-- 에러 메시지 표시 부분 -->
+          <button class="login_button" type="submit">로그인</button>
+        </form>
+        <br />
+
+        <p class="signin_link">
+          계정이 없다면 <a href="/signup"> 관리자에게 관리자 권한 요청하기 </a>
+        </p>
+      </section>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "ONESHINHANBOLD";
+  src: url("../assets/font/ONESHINHANBOLD.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "ONESHINHANMEDIUM";
+  src: url("../assets/font/ONESHINHANMEDIUM.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "ONESHINHANLIGHT";
+  src: url("../assets/font/ONESHINHANLIGHT.TTF") format("truetype");
+}
+body {
+  font-family: "ONESHINHANLIGHT";
+  letter-spacing: -0.1px;
+}
