@@ -110,6 +110,55 @@ const fetchStocks = () => {
 };
 
 const initForm = () => {
+    $('#quizStartYear').attr("min", 2018);
+    $('#quizStartYear').on('input', function() {
+        // 변경된 값 가져오기
+        var inputValue = +$(this).val();
+        
+        for (let i = 0; i < 5; i++) {
+            $(".year" + i).text(inputValue + i);
+        }
+    });
+
+    $("#investGameForm").submit(function (event) {
+        event.preventDefault();
+
+        const itemId = $("#investGameTarget").find("option:selected").val();
+        if (!itemId) {
+            alert("종목을 선택해주세요.");
+            return;
+        }
+
+        var { isValid, data: jsonData } = formDataToJSON(this);
+        
+        if (!isValid) {
+            alert("모든 정보를 입력해주세요.");
+            return;
+        }
+
+        jsonData['itemId'] = itemId;
+
+        // POST 요청 보내기
+        $.ajax({
+            url: "/api/admin/invest",
+            type: "POST",
+            data: JSON.stringify(jsonData), // 데이터를 JSON 문자열로 변환
+            contentType: "application/json; charset=utf-8", // Content-Type을 application/json으로 설정
+            dataType: "json", // 서버로부터 받을 데이터의 타입을 JSON으로 설정
+            success: function({ success, data, message }) {
+                if (success) {
+                    alert(data);
+                    location.reload();
+                } else {
+                    alert(message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+
     $("#termQuizForm").submit(function (event) {
         event.preventDefault(); // 폼 제출 방지
 
@@ -161,11 +210,10 @@ const initForm = () => {
                 const { success, data, message } = response;
                 if (success) {
                     alert(data);
+                    location.reload();
                 } else {
                     alert(message);
                 }
-
-                location.reload();
             },
             error: function (error) {
                 console.error("전송 실패:", error);
@@ -212,3 +260,58 @@ $(document).ready(() => {
 
     initForm();
 });
+
+const formDataToJSON = (form) => {
+    var formData = $(form).serializeArray();
+    const json = {};
+    const titles = [];
+    const urls = [];
+    const result = formData.every(function(field) {
+        if (!field.value || field.value.length == 0) {
+            return false;
+        }
+
+        if (field.name.startsWith("title")) {
+            titles.push(field.value);
+        } else if (field.name.startsWith("url")) {
+            urls.push(field.value);
+        } else {
+            json[field.name] = field.value;
+        }
+        
+        return true;
+    });
+    
+    if (!result) {
+        return {
+            isValid: false,
+        };
+    }
+
+    let idx = 0;
+    const newList = [];
+    for (let i = 0; i < 5; i++) {
+        // NewsInfo
+        const element = [];
+        
+        for (let j = 0; j < 5; j++) {
+            // News
+            element.push({
+                title: titles[idx],
+                url: urls[idx],
+            });
+            idx++;            
+        }
+
+        newList.push({
+            year: $('.year' + i).text(),
+            news: element,
+        });
+    }
+    json['newList'] = newList;
+
+    return {
+        isValid: true,
+        data: json,
+    };
+}

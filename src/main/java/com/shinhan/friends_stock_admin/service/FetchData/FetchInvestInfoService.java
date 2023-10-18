@@ -84,10 +84,10 @@ public class FetchInvestInfoService {
                         String date = parts[0];
                         String price = parts[4];
                         if(Integer.parseInt((date.substring(0,4))) >= currentDate[0]){
+                            s3UploadUtility.upload(stockId + "-"+ Arrays.toString(new int[]{currentDate[0] - 1}),list.toString());
                             s3uploadData.setList(list);
                             list.clear();
                             currentDate[0]++;
-                            s3UploadUtility.upload(stockId + "-"+ Arrays.toString(new int[]{currentDate[0] - 1}),list.toString());
                         }
                         list.add(new S3uploadData.Data(date,price));
 
