@@ -23,6 +23,12 @@ public class S3uploadData {
     public static class Data{
         private String date;
         private String price;
+
+        @Override
+        public String toString() {
+            return "{\"date\":\"" + date + "\"," +
+                    "\"price\":\"" + price + "\"}";
+        }
     }
 
     @Override
@@ -34,4 +40,5 @@ public class S3uploadData {
             throw new RuntimeException(e);
         }
     }
+
 }
