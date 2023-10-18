@@ -4,40 +4,78 @@
     <meta charset="UTF-8">
     <title>회원가입 페이지</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/signup.css" />
+    <link rel="stylesheet" href="/css/global.css" />
 </head>
 <body>
-<h1>회원가입 페이지</h1>
-        이름 : <input type="text" id="name" name="name"><br>
-        비밀번호 : <input type="password" id="password" name="password"><br>
-        부서 : <input type="text" id="department" name="department"><br>
+<div class="wrap">
+    <section >
+        <h1 class="right_login_title">회원가입 페이지</h1>
+        <img
+                class="login_image"
+                src="/assets/images/login_bg.png"
+                alt="회원가입 이미지"
+        />
+    </section>
+    <section>
+        <div class="nickname_container">
+            <img src="/assets/images/icon_user.svg" alt="유저 이미지" />
+            <div class="password_input">
+                <label> 이름 </label>
+                <input
+                        type="text" id="name" name="name"
+                       placeholder="이름을 입력해주세요"
+                ><br>
+            </div>
+        </div>
+        <div class="password_container">
+            <img src="/assets/images/icon_password.svg" alt="유저 이미지" />
+            <div class="password_input">
+                <label> 비밀번호 </label>
+                <input type="password" id="password" name="password"
+                       placeholder="비밀번호를 입력해주세요"><br>
+            </div>
+        </div>
+        <div class="password_container">
+            <img src="/assets/images/icon_password.svg" alt="유저 이미지" />
+            <div class="password_input">
+                <label> 부서 </label>
+                <input type="text" id="department" name="department"
+                       placeholder="부서를 입력해주세요"><br>
+            </div>
+        </div>
+
         <button id="submit" type="submit">관리자에게 관리자 권한 요청하기</button>
-<br>
-<a href="/login">로그인 하기 -></a>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:inline="javascript">
-$(document).ready(()=>{
-   $('#submit').click(() =>{
-       const requestData = {
-           name: $('#name').val(),
-           password: $('#password').val(),
-           department: $('#department').val()
-       };
-           $.ajax({
-           type: "POST",
-           url: "/api/signIn",
-           contentType: "application/json",
-           data: JSON.stringify(requestData),
-           success: (response) =>{
-               alert("성공적으로 요청되었습니다.");
-               location.reload();
-           },
-           error: (jqXHR, textStatus, errorThrown) => {
-               alert("요청에 실패하였습니다.");
-                location.reload();
-           }
-       });
-   })
-});
-</script>
+        <br>
+        <a href="/login">로그인 하기 -></a>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script th:inline="javascript">
+            $(document).ready(()=>{
+                $('#submit').click(() =>{
+                    const requestData = {
+                        name: $('#name').val(),
+                        password: $('#password').val(),
+                        department: $('#department').val()
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/signIn",
+                        contentType: "application/json",
+                        data: JSON.stringify(requestData),
+                        success: (response) =>{
+                            alert("성공적으로 요청되었습니다.");
+                            location.reload();
+                        },
+                        error: (jqXHR, textStatus, errorThrown) => {
+                            alert("요청에 실패하였습니다.");
+                            location.reload();
+                        }
+                    });
+                })
+            });
+        </script>
+    </section>
+
+</div>
 </body>
 </html>

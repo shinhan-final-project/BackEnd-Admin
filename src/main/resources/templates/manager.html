@@ -8,21 +8,39 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="/css/signup.css" />
+    <link rel="stylesheet" href="/css/manager.css" />
 </head>
 
 <body>
-    <button id="fetchData">관리자 요청 보낸 인원 보기</button>
-
-    <div id="tableContainer">
-        <!-- JSON 데이터가 여기에 표시될 것입니다 -->
+<div class="wrap">
+    <div class="sidebar">
+        <div class="sidebar_header">
+            <p>두근두근!</p>
+            <p>신한프렌즈!</p>
+            <span class="color_blue">manager</span>
+        </div>
+        <div class="sidebar_menu">
+            <button id="logout" th:onclick="|location.href='@{/logout}'|">로그아웃</button>
+        </div>
+        <img
+                class="sidebar_img"
+                src="/assets/images/sol_friends.png"
+                alt="솔친구"/>
     </div>
+        <div class="main_content">
+            <button id="fetchData">관리자 요청 보낸 인원 보기</button>
+            <div id="tableContainer">
+                <!-- JSON 데이터가 여기에 표시될 것입니다 -->
+            </div>
+            <button id="approveButton" style="display: none;">승인하기</button>
+            <button id="refuseButton" style="display: none;">거절하기</button>
 
-    <button id="approveButton" style="display: none;">승인하기</button>
-    <button id="refuseButton" style="display: none;">거절하기</button>
+            <script src="/js/manager.js"></script>
 
-    <button id="logout" th:onclick="|location.href='@{/logout}'|">로그아웃</button>
+        </div>
 
-    <script src="/js/manager.js"></script>
+</div>
 </body>
 
 </html>

@@ -37,7 +37,7 @@
               <a href="/main">문제 만들기</a>
             </li>
             <li>
-              <a href="/manager">권한 허용 관리</a>
+              <a href="/main">권한 허용 관리</a>
             </li>
           </ul>
         </div>
@@ -56,22 +56,17 @@
       <!-- 용어 게임 문제 만들기 & 로그 보기 -->
       <div class="main_container">
         <div id="container">
-          <button id="makeTermQuizBtn" class="tab_button">
-            용어 게임 퀴즈 만들기
-          </button>
+          <button id="makeTermQuizBtn" class="tab_button">용어 게임 퀴즈 만들기</button>
           <button id="showLog" class="tab_button">게임 로그 보기</button>
-            <br>
-            <button id="makeInvestGameBtn">주가 예측 퀴즈 만들기</button>
         </div>
 
         <div class="main_content">
-          <div id="myDiv" class="toggleWrapper"></div>
-          <div id="tableContainer" class="toggleWrapper">
-            <!-- JSON 데이터가 여기에 표시될 것입니다 -->
-          </div>
-
-          <div id="termQuizFormContainer" class="toggleWrapper">
+          <div id="myDiv"></div>
+          <div id="termQuizFormContainer" class="main_quiz" >
             <!-- 퀴즈 만들기 -->
+            <div id="tableContainer" class="main_content_select">
+              <!-- JSON 데이터가 여기에 표시될 것입니다 -->
+            </div>
             <form id="termQuizForm" action="" method="post">
               <input type="hidden" name="termId" id="termId" />
 
@@ -84,7 +79,7 @@
               ></textarea>
 
               <!-- questionItem -->
-              <div th:each="i: ${#numbers.sequence(1, 3)}">
+              <div th:each="i: ${#numbers.sequence(1, 3)}" class="main_quiz_input">
                 <input
                   type="text"
                   th:id="'questionOption' + ${i}"
@@ -105,71 +100,23 @@
                 >맞췄을 때 상승할 호감도를 입력하세요:</label
               >
               <input type="number" id="plusPoint" />
+
               <label for="minusPoint"
                 >틀렸을 때 하락할 호감도를 입력하세요:</label
               >
               <input type="number" id="minusPoint" />
-
+              <br />
               <button type="submit">저장</button>
             </form>
 
-            <p>
+            <p class="explain">
               한국 예탁 결제원의 설명:
               <b id="desc"></b>
             </p>
           </div>
         </div>
       </div>
-
-      <div id="investGameFormContainer" class="toggleWrapper">
-        <!-- 주가 예측 퀴즈 만들기 -->
-        <form id="investGameForm" action="" method="post">
-
-            <div>
-                <select name="itemId" id="investGameTarget">
-                    <option selected disabled>종목을 선택해주세요.</option>
-                </select>
-            </div>
-
-            <div>
-                <textarea name="companyInfo" id="companyInfo"
-                 cols="30" rows="5" maxlength="30"
-                 placeholder="회사 소개를 입력해주세요."></textarea>
-            </div>
-
-            <div>
-                문제가 시작될 연도를 입력해주세요:
-                <input id="quizStartYear" type="number" name="quizStartYear">
-                <p>입력한 연도 이후 5년 동안의 주가 변화가 문제로 나옵니다. (예, 2018년 선택 시 2019 ~ 2023년에 해당하는 주가를 예측합니다.)</p>
-            </div>
-
-            <div>
-                주가 예측에 도움을 줄 수 있는 뉴스를 입력해주세요. (연도 별 5개)
-                <fieldset id="newsContainer" th:each="i : ${#numbers.sequence(0, 4)}">
-                    <label for=""><span th:class="'year' + ${i}">0000</span></label>
-                    <div th:each="j : ${#numbers.sequence(1, 5)}">
-                        <label th:text="${j} + '. '"></label>
-                        뉴스 제목
-                        <input type="text" th:name="'title' + ${i * 5 + j}"
-                        th:value="'News Title ' + ${i * 5 + j}"
-                        />
-                        뉴스 URL
-                        <input type="text" th:name="'url' + ${i * 5 + j}"
-                        th:value="'https://example.com/news' + ${i * 5 + j}"
-                        />
-                    </div>
-                </fieldset>
-            </div>
-
-            <div>
-                <button type="submit">저장</button>
-            </div>
-        </form>
-      </div>
     </div>
-
-    <button id="logout" th:onclick="|location.href='@{/logout}'|">로그아웃</button>
-    
     <script src="/js/admin.js"></script>
   </body>
 </html>
