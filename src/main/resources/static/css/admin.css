@@ -19,6 +19,10 @@ body {
   display: flex;
 }
 
+.login_image {
+  width: 50vw;
+}
+
 /* 사이드 바 */
 .sidebar {
   width: 240px;
@@ -89,7 +93,7 @@ body {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  border: 0px;
+  border: 0;
   margin-right: 30px;
   cursor: pointer;
 }
@@ -100,26 +104,87 @@ body {
 
 /* 메인 내용 */
 .main_content {
-  padding: 20px 0px;
+  width: 1000px;
+  padding: 30px;
 }
 
-input[select] {
-  width: 200px;
-  padding: 5px 5px;
-  border: 1px solid #999;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+.main_content_select{
+  padding: 30px;
 }
 
-input[text] {
-  width: 200px;
-  padding: 10px 10px;
-  border: 1px solid #999;
-  border-radius: 8px;
+.main_quiz {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.plusPoint{
+.main_quiz_input{
+  padding: 30px;
+}
+
+/* 텍스트 에어리어 스타일 */
+#explanation {
+  width: 300px;
+  height: 150px;
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* 퀴즈 항목 스타일 */
+.main_quiz_input {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.main_quiz_input input[type="text"] {
+  width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.main_quiz_input label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.main_quiz_input input[type="radio"] {
+  margin-bottom: 10px;
+}
+
+/* 점수 입력 필드 스타일 */
+#plusPoint, #minusPoint {
   width: 100px;
-  padding: 10px 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* 저장 버튼 스타일 */
+#termQuizFormContainer button[type="submit"] {
+  background-color: #0046ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#termQuizFormContainer button[type="submit"]:hover {
+  background-color: rgba(0, 70, 255, 0.56);
+}
+
+/* 예탁결제원 설명 */
+.explain{
+  width: 800px;
 }

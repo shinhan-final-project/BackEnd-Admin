@@ -1,0 +1,111 @@
+/* global.css */
+
+body {
+    font-family: Arial, sans-serif;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.wrap {
+    padding: 5vh 3vw;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+/* signup.css */
+.login_title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+
+.login_subtitle {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin: 0;
+}
+.right_login_title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.login_image {
+    width: 50vw;
+}
+
+.nickname_container{
+    margin-top: 20px;
+}
+
+.nickname_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nickname_container,
+.password_container {
+    width: 600px;
+    height: 77px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #ececec;
+    margin-bottom: 15px;
+}
+
+.nickname_container img,
+.password_container img {
+    margin-inline: 10px;
+    width: 20px;
+    height: 20px;
+    padding: 0 10px;
+}
+
+.nickname_input input,
+.password_input input {
+    width: 500px;
+    font-size: 18px;
+    background-color: rgba(236, 236, 236, 1);
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    margin-top: -8px;
+}
+
+#submit {
+    width: 600px;
+    height: 77px;
+    border: none;
+    border-radius: 8px;
+    background: #0046ff;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit:hover {
+    background-color: rgba(163, 199, 247, 1);
+}
+
+a {
+    color: #0046ff;
+    text-decoration: none;
+    display: block;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

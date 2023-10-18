@@ -237,7 +237,7 @@ $(document).ready(() => {
     $("#makeTermQuizBtn").click(() => {
         $('.toggleWrapper').css('display', 'none');
         $('#myDiv').css('display', 'block');
-        $('#termQuizFormContainer').css('display', 'block');
+        $('#termQuizFormWrapper').css('display', 'block');
 
         if (fetched) {
             return;
