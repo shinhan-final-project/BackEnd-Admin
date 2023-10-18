@@ -1,17 +1,16 @@
 /* 전체 화면  */
 body {
     background-color: #f2f2f2;
-    padding: 0 0;
-    margin: 0 0;
-    overflow-y: hidden;
+    padding: 0;
+    margin: 0;
 }
 
 .wrap {
+    margin: 0;
+    padding: 0;
     display: flex;
-}
-
-.login_image {
-    width: 50vw;
+    flex-direction: row;
+    justify-content: left;
 }
 
 /* 사이드 바 */
@@ -21,7 +20,7 @@ body {
     flex-direction: column;
     height: 100vh;
     background-color: white;
-    padding: 20px;
+    padding: 20px 30px 20px 30px;
 }
 
 .sidebar_header p {
@@ -48,7 +47,6 @@ body {
 
 .sidebar_menu {
     height: 70%;
-    margin-left: 0;
 }
 
 
@@ -85,16 +83,33 @@ button:hover {
 
 /* 메인 헤더 */
 
-.main_container {
-    padding: 30px;
-}
 
 /* 메인 내용 */
 .main_content {
-    margin-left: 0;
     padding: 30px;
+    height: 100vh;
+    margin-left: 300px;
+    margin-top: 0;
+}
+
+.main_content button{
+    background-color: #0046ff;
+    padding: 20px;
+
 }
 
 .main_content_select{
     padding: 30px;
+}
+
+#tableContainer {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    letter-spacing: 2px;
+}
+
+#approveButton,
+#refuseButton {
+    margin-top: 10px;
 }
