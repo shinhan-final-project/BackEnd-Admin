@@ -2,6 +2,7 @@ package com.shinhan.friends_stock_admin.controller.Admin;
 
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
 import com.shinhan.friends_stock_admin.DTO.investGame.PostInvestQuestionDTO;
+import com.shinhan.friends_stock_admin.DTO.investGame.ResponseInvestItemDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.PostTermQuestionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.ResponseTermInfoDTO;
 import com.shinhan.friends_stock_admin.service.Admin.AdminService;
@@ -31,8 +32,13 @@ public class AdminController {
         return adminService.registerTermQuestion(postTermQuestion, principal);
     }
 
-//    @PostMapping("/api/admin/invest")
-//    public Response<String> registerInvestQuestion(@RequestBody PostInvestQuestionDTO postInvestQuestionDTO) throws Exception{
-//        return adminService.registerInvestQuestion(postInvestQuestionDTO);
-//    }
+    @GetMapping("/api/admin/invest-items")
+    public Response<List<ResponseInvestItemDTO>> getInvestItems() throws Exception {
+        return adminService.getInvestItems();
+    }
+
+    @PostMapping("/api/admin/invest")
+    public Response<String> registerInvestQuestion(@RequestBody PostInvestQuestionDTO postInvestQuestionDTO) throws Exception{
+        return adminService.registerInvestQuestion(postInvestQuestionDTO);
+    }
 }

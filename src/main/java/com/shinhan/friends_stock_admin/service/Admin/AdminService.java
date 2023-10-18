@@ -2,6 +2,7 @@ package com.shinhan.friends_stock_admin.service.Admin;
 
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
 import com.shinhan.friends_stock_admin.DTO.investGame.PostInvestQuestionDTO;
+import com.shinhan.friends_stock_admin.DTO.investGame.ResponseInvestItemDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.PostTermQuestionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.PostTermQuestionOptionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.ResponseTermInfoDTO;
@@ -77,6 +78,11 @@ public class AdminService {
         return Response.success("요청 성공");
     }
 
+    public Response<List<ResponseInvestItemDTO>> getInvestItems() {
+        List<InvestItem> investItems = investItemRepository.findByIsPublished(false);
+        return Response.success(investItems.stream().map(ResponseInvestItemDTO::of).toList());
+    }
+
     @Transactional
     public Response<String> registerInvestQuestion(PostInvestQuestionDTO postInvestQuestionDTO) throws Exception {
 //        try {
@@ -92,7 +98,7 @@ public class AdminService {
             //InvestItemNews에 추가하고, InvestItem에 내용 post한 내용 update
 
             //s3에 종가 upload
-            fetchInvestInfoService.getCompanyStock(String.valueOf(investItem.getStockCode()), String.valueOf(postInvestQuestionDTO.getQuizStartYear()), String.valueOf(postInvestQuestionDTO.getQuizStartYear() + 6));
+            fetchInvestInfoService.getCompanyStock(investItem, String.valueOf(postInvestQuestionDTO.getQuizStartYear()), String.valueOf(postInvestQuestionDTO.getQuizStartYear() + 6));
             return Response.success("요청 성공");
 //        }catch (Exception e){
 //            throw new Exception("문제 제출에 실패하였습니다.");

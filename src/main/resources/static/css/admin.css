@@ -3,9 +3,12 @@ select {
   height: 30px;
 }
 
-#myDiv,
-#termQuizFormContainer {
-  display: none;
+.toggleWrapper {
+    display: none;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* 전체 화면  */
@@ -13,6 +16,10 @@ body {
   background-color: #f2f2f2;
   padding: 0 0;
   margin: 0 0;
+<<<<<<< HEAD
+=======
+  /* overflow-y: hidden; */
+>>>>>>> a190cd1982e64dc5510ec6c96c85da44739528dd
 }
 
 .wrap {
@@ -113,10 +120,7 @@ body {
 }
 
 .main_quiz {
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 .main_quiz_input{
