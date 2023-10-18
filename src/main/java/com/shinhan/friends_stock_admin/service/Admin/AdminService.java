@@ -98,7 +98,7 @@ public class AdminService {
             //InvestItemNews에 추가하고, InvestItem에 내용 post한 내용 update
 
             //s3에 종가 upload
-            fetchInvestInfoService.getCompanyStock(String.valueOf(investItem.getStockCode()), String.valueOf(postInvestQuestionDTO.getQuizStartYear()), String.valueOf(postInvestQuestionDTO.getQuizStartYear() + 6));
+            fetchInvestInfoService.getCompanyStock(investItem, String.valueOf(postInvestQuestionDTO.getQuizStartYear()), String.valueOf(postInvestQuestionDTO.getQuizStartYear() + 6));
             return Response.success("요청 성공");
 //        }catch (Exception e){
 //            throw new Exception("문제 제출에 실패하였습니다.");

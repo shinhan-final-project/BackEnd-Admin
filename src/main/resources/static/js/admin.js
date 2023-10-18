@@ -110,7 +110,8 @@ const fetchStocks = () => {
 };
 
 const initForm = () => {
-    $('#quizStartYear').attr("min", 2018);
+    $('#quizStartYear').attr("min", 2013);
+    $('#quizStartYear').attr("max", new Date().getFullYear());
     $('#quizStartYear').on('input', function() {
         // 변경된 값 가져오기
         var inputValue = +$(this).val();
@@ -155,6 +156,12 @@ const initForm = () => {
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
+                try {
+                    const err = JSON.parse(xhr.responseText);
+                    alert(err.message);
+                } catch (error) {
+                    
+                }
             }
         });
     });
