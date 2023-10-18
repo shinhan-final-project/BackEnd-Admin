@@ -2,6 +2,7 @@ package com.shinhan.friends_stock_admin.service.Admin;
 
 import com.shinhan.friends_stock_admin.DTO.auth.Response;
 import com.shinhan.friends_stock_admin.DTO.investGame.PostInvestQuestionDTO;
+import com.shinhan.friends_stock_admin.DTO.investGame.ResponseInvestItemDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.PostTermQuestionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.PostTermQuestionOptionDTO;
 import com.shinhan.friends_stock_admin.DTO.termGame.ResponseTermInfoDTO;
@@ -75,6 +76,11 @@ public class AdminService {
             throw new Exception("주식 용어 게임을 만드는데 실패하였습니다.");
         }
         return Response.success("요청 성공");
+    }
+
+    public Response<List<ResponseInvestItemDTO>> getInvestItems() {
+        List<InvestItem> investItems = investItemRepository.findByIsPublished(false);
+        return Response.success(investItems.stream().map(ResponseInvestItemDTO::of).toList());
     }
 
     @Transactional
