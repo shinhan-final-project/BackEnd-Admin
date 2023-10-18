@@ -1,0 +1,100 @@
+/* 전체 화면  */
+body {
+    background-color: #f2f2f2;
+    padding: 0 0;
+    margin: 0 0;
+    overflow-y: hidden;
+}
+
+.wrap {
+    display: flex;
+}
+
+.login_image {
+    width: 50vw;
+}
+
+/* 사이드 바 */
+.sidebar {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
+}
+
+.sidebar_header p {
+    color: var(--Primary-Text, #333);
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.color_blue {
+    color: #0046ff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#logout {
+    display: block;
+    margin-top: 20px;
+    border: 0px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.sidebar_menu {
+    height: 70%;
+    margin-left: 0;
+}
+
+
+button {
+    cursor: pointer;
+    background-color: #0046ff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(163, 199, 247, 1);
+}
+
+
+#logout {
+    background-color: #0046ff;
+}
+
+#logout:hover {
+    background-color: rgba(0, 70, 255, 0.75);
+}
+
+.sidebar_img {
+    width: 240px;
+    position: absolute;
+    bottom: 10px;
+}
+
+/* 메인 헤더 */
+
+.main_container {
+    padding: 30px;
+}
+
+/* 메인 내용 */
+.main_content {
+    margin-left: 0;
+    padding: 30px;
+}
+
+.main_content_select{
+    padding: 30px;
+}
