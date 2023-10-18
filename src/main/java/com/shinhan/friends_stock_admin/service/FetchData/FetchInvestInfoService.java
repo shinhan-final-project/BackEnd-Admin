@@ -33,6 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+
 @RequiredArgsConstructor
 @Service
 public class FetchInvestInfoService {
@@ -85,22 +86,17 @@ public class FetchInvestInfoService {
                         String price = parts[4];
                         if(Integer.parseInt((date.substring(0,4))) >= currentDate[0]){
                             s3uploadData.setList(list);
-                            for(S3uploadData.Data d:list){
-                                System.out.println(d.getDate());
-                            }
                             list.clear();
                             currentDate[0]++;
                         }
                         list.add(new S3uploadData.Data(date,price));
-                        //upload(stockId + "-"+ Arrays.toString(new int[]{currentDate[0] - 1}),list);
+                        s3UploadUtility.upload(stockId + "-"+ Arrays.toString(new int[]{currentDate[0] - 1}),list.toString());
 
                         //date price s3에 올리기
                     } else {
                         System.out.println("파싱할 데이터가 충분하지 않습니다.");
                     }
                 });
-        s3UploadUtility.upload("test-72", s3uploadData.toString());
-
     }
 
 
