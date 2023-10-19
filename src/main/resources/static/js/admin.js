@@ -62,7 +62,7 @@ const fetchTerms = () => {
 
             const selectedOption = $(this).find("option:selected");
             const titleValue = selectedOption.attr("title");
-            $("#desc").text(titleValue);
+            $("#desc").text(titleValue.replace(/<[^>]*>/g, '').replace(/\n|&amp;|&lt;|&gt;|&quot;|&apos;|&nbsp;/g, ''));
         });
     }).fail(function (error) {
         fetched = false;

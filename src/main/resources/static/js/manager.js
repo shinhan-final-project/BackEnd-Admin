@@ -9,6 +9,7 @@ $(document).ready(() => {
             /* JSON 데이터를 테이블로 변환 */
             $.each(data, (index, item) => {
                 table += '<tr>'
+                    + '<td>' + item.id + '</td>'
                     + '<td>' + item.name + '</td>'
                     + '<td>' + item.department + '</td>'
                     + '<td><input type="checkbox" name="selectedItems" value="' + item.id + '"></td>'

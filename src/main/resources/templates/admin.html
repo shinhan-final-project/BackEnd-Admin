@@ -152,12 +152,10 @@
                           <label th:text="${j} + '. '"></label>
                           뉴스 제목
                           <input type="text" th:name="'title' + ${i * 5 + j}"
-                          th:value="'News Title ' + ${i * 5 + j}"
                           />
                           <br/>
                           뉴스 URL
                           <input type="text" th:name="'url' + ${i * 5 + j}"
-                          th:value="'https://example.com/news' + ${i * 5 + j}"
                           />
                       </div>
                   </fieldset>

@@ -137,7 +137,7 @@ th, td {
 
 /* 체크박스 숨기기 */
 input[type="checkbox"] {
-    display: none;
+    /* display: none; */
 }
 
 /* "승인하기" 및 "거부하기" 버튼 스타일 */
