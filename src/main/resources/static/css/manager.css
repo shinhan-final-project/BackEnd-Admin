@@ -15,6 +15,7 @@ body {
 
 /* 사이드 바 */
 .sidebar {
+    margin-top: 0;
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -68,7 +69,15 @@ button:hover {
 
 
 #logout {
+    cursor: pointer;
     background-color: #0046ff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
 }
 
 #logout:hover {
@@ -92,11 +101,6 @@ button:hover {
     margin-top: 0;
 }
 
-.main_content button{
-    background-color: #0046ff;
-    padding: 20px;
-
-}
 
 .main_content_select{
     padding: 30px;
@@ -151,4 +155,35 @@ input[type="checkbox"] {
 
 #approveButton:hover, #refuseButton:hover {
     background-color: #45a049;
+}
+
+.main_content {
+    max-width: 850px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+/* 테이블 스타일 */
+#tableContainer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* 테이블 헤더 스타일 */
+#tableContainer thead {
+    background-color: #777777;
+    white-space: nowrap;
+}
+
+/* 테이블 행 스타일 */
+#tableContainer tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 셀 스타일 */
+#tableContainer td, #tableContainer th {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
