@@ -26,9 +26,9 @@ body {
 /* 사이드 바 */
 .sidebar {
   width: 240px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   background-color: white;
   padding: 20px 30px 20px 30px;
 }
@@ -187,4 +187,89 @@ body {
 /* 예탁결제원 설명 */
 .explain{
   width: 800px;
+}
+
+/*로그 보기*/
+/* 게임 로그 표 스타일링 */
+#tableContainer {
+  max-width: 850px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+/* 테이블 스타일 */
+#tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* 테이블 헤더 스타일 */
+#tableContainer thead {
+  background-color: #777777;
+  white-space: nowrap;
+}
+
+/* 테이블 행 스타일 */
+#tableContainer tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* 셀 스타일 */
+#tableContainer td, #tableContainer th {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 주가 예측 */
+/* 폼 컨테이너 스타일 */
+#investGameForm {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+/* 입력 요소 스타일 */
+#investGameForm div {
+  margin-bottom: 20px;
+}
+
+textarea, input[type="number"], input[type="text"], select {
+  width: 80%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* 뉴스 입력 컨테이너 스타일 */
+#newsContainer {
+  margin-top: 10px;
+}
+
+/* 뉴스 레이블 스타일 */
+#newsContainer label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* 저장 버튼 스타일 */
+button[type="submit"] {
+  background-color: #0046ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: rgba(0, 70, 255, 0.59);
 }

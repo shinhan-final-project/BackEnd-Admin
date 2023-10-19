@@ -113,3 +113,42 @@ button:hover {
 #refuseButton {
     margin-top: 10px;
 }
+
+/* 테이블 스타일 */
+table {
+    width: 500px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#fetchData{
+    width: 500px;
+}
+
+/* 체크박스 숨기기 */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* "승인하기" 및 "거부하기" 버튼 스타일 */
+#approveButton, #refuseButton {
+    display: none;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#approveButton:hover, #refuseButton:hover {
+    background-color: #45a049;
+}
