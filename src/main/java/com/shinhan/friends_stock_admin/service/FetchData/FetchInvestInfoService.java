@@ -49,7 +49,7 @@ public class FetchInvestInfoService {
     private final S3UploadUtility s3UploadUtility;
 
     public void getCompanyStock(InvestItem investItem, String startTime, String endTime) throws JsonProcessingException {
-        String stockId = String.valueOf(investItem.getStockCode());
+        String stockId = String.format("%06d", investItem.getStockCode());
         final String url = String.valueOf(UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("fchart.stock.naver.com")
